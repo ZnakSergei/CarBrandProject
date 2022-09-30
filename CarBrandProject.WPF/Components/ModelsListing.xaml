@@ -11,7 +11,7 @@
                 Padding="5" 
                 Margin="5" 
                 BorderThickness="1">
-            <Grid DataContext="{Binding ModelsViewModel}">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -21,7 +21,13 @@
                            HorizontalAlignment="Center"/>
 
                 <ListView Grid.Row="1" 
-                          ItemsSource="{Binding ModelsList}">
+                          ItemsSource="{Binding Models}"
+                          SelectedItem="{Binding SelectedModel}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ModelName}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
                 </ListView>
             </Grid>

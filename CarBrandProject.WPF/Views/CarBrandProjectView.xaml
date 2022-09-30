@@ -16,7 +16,8 @@
 
             <components:BrandsListing DataContext="{Binding BrandViewModel}"/>
 
-            <components:ModelsListing Grid.Column="1"/>
+            <components:ModelsListing Grid.Column="1" 
+                                      DataContext="{Binding ModelsViewModel}"/>
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -24,9 +25,10 @@
                     <RowDefinition Height="1.8*"/>
                 </Grid.RowDefinitions>
 
-                <components:BrandsDetails DataContext="{Binding BrandItemViewModel}"/>
+                <components:BrandsDetails DataContext="{Binding BrandDetailsViewModel}"/>
 
-                <components:ModelsDetails Grid.Row="1"/>
+                <components:ModelsDetails Grid.Row="1" 
+                                          DataContext="{Binding ModelDetails}"/>
 
             </Grid>
         </Grid>

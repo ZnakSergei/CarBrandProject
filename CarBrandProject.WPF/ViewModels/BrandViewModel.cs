@@ -1,4 +1,5 @@
 ﻿using CarBrandProject.WPF.Models;
+using CarBrandProject.WPF.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,40 +11,79 @@ namespace CarBrandProject.WPF.ViewModels
 {
     public class BrandViewModel : BaseViewModel
     {
-        public ObservableCollection<BrandItemViewModel> Brands {get;set;}
+        public ObservableCollection<BrandItemListing> Brands {get;set;}
         public ObservableCollection<ModelsModel> Models {get;set;}
+        
 
-        private BrandModel _selectedBrand;
+        private readonly SelectedBrandStores _selectedBrandStores;
 
-        public BrandModel SelectedBrand
+        private BrandItemListing _selectedBrand;
+        
+        public BrandItemListing SelectedBrand
         {
             get { return _selectedBrand; }
             set
             {
                 _selectedBrand = value;
                 OnPropertyChanged(nameof(SelectedBrand));
+
+                _selectedBrandStores.BrandStore = _selectedBrand.BrandModel;
+
             }
         }
 
-        public BrandViewModel()
+        public BrandViewModel(SelectedBrandStores selectedBrandStores)
         {
+            Brands = new ObservableCollection<BrandItemListing>();
 
-            Brands = new ObservableCollection<BrandItemViewModel>();
-            Models = new ObservableCollection<ModelsModel>();
-                
+            Brands.Add(new BrandItemListing(new BrandModel() { BrandName = "Brand1", Description = "Brand1Description", 
+                ImageBrandPath = "D:/VS2022 Projects/Lastry/CarBrandProject/CarBrandProject.WPF/BrandIcons/Audi_Icon.png" }));
+            Brands.Add(new BrandItemListing(new BrandModel() { BrandName = "Brand2", Description = "Brand2Description", 
+                ImageBrandPath = "D:/VS2022 Projects/Lastry/CarBrandProject/CarBrandProject.WPF/BrandIcons/BMW_Icon.jpg" }));
+            Brands.Add(new BrandItemListing(new BrandModel() { BrandName = "Brand3", Description = "Brand3Description",
+                ImageBrandPath = "D:/VS2022 Projects/Lastry/CarBrandProject/CarBrandProject.WPF/BrandIcons/VW_Icon.jpg" }));
+            _selectedBrandStores = selectedBrandStores;
         }
     }
 
-    public class BrandItemViewModel : BaseViewModel
+    public class BrandItemListing : BaseViewModel
     {
-        public string BrandName { get; set; }
-        public string BrandDescription { get; set; }
+        public BrandModel BrandModel { get; set; }
 
-        public BrandItemViewModel()
+        public string BrandName => BrandModel.BrandName;
+
+        public BrandItemListing(BrandModel brandModel)
         {
-            BrandName = "Brand1";
-            BrandDescription = "DescriptionBrand1";
+            BrandModel = brandModel;
+        }
+    }
+
+    public class BrandDetails : BaseViewModel
+    {
+        private readonly SelectedBrandStores _selectedBrandStores;
+        private BrandModel SelectedBrand => _selectedBrandStores.BrandStore;
+        public string BrandName => SelectedBrand?.BrandName ?? "Unknown";
+        public string Description => SelectedBrand?.Description ?? "Unknown";
+        public string ImageBrandPath => SelectedBrand?.ImageBrandPath;
+
+        public BrandDetails(SelectedBrandStores selectedBrandStores)
+        {           
+            _selectedBrandStores = selectedBrandStores;
+
+            _selectedBrandStores.BrandStoresChanged += _selectedBrandStores_BrandStoresChanged;
         }
 
+        protected override void Dispose()
+        {
+            _selectedBrandStores.BrandStoresChanged -= _selectedBrandStores_BrandStoresChanged;
+            base.Dispose();
+        }
+
+        private void _selectedBrandStores_BrandStoresChanged()
+        {
+            OnPropertyChanged(nameof(BrandName));
+            OnPropertyChanged(nameof(Description));
+            OnPropertyChanged(nameof(ImageBrandPath));
+        }
     }
 }

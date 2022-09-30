@@ -1,4 +1,5 @@
-﻿using CarBrandProject.WPF.ViewModels;
+﻿using CarBrandProject.WPF.Stores;
+using CarBrandProject.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,11 +15,19 @@ namespace CarBrandProject.WPF
     /// </summary>
     public partial class App : Application
     {
+        private readonly SelectedBrandStores _selectedBrandStores;
+        private readonly SelectedModelStores _selectedModelStores;
+
+        public App()
+        {
+            _selectedBrandStores = new SelectedBrandStores();
+            _selectedModelStores = new SelectedModelStores();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new CarBrandProjectViewModel()
+                DataContext = new CarBrandProjectViewModel(_selectedBrandStores, _selectedModelStores)
             };
             MainWindow.Show();
             base.OnStartup(e);

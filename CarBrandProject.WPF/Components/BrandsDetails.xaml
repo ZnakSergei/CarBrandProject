@@ -28,7 +28,9 @@
 
                         <TextBlock Text="Brand" FontSize="16"
                                HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="1" Text="{Binding BrandName}"/>
+                        <TextBlock Grid.Row="1" Text="{Binding BrandName}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
                     </Grid>
                 </Border>
 
@@ -43,7 +45,8 @@
                         <TextBlock Text="Label" FontSize="16"
                                HorizontalAlignment="Center"/>
 
-                        <!--#region Image-->
+                        <Image Grid.Row="1" Source="{Binding ImageBrandPath}" 
+                               Width="100" Height="50"/>
 
                     </Grid>
                 </Border>
@@ -62,7 +65,7 @@
                                HorizontalAlignment="Center"/>
 
                         <TextBlock Grid.Row="1"
-                               Text="{Binding BrandDescription}" 
+                               Text="{Binding Description}" 
                                TextWrapping="WrapWithOverflow"/>
                     </Grid>
                 </Border>

@@ -10,7 +10,8 @@ namespace CarBrandProject.WPF.Models
     public class BrandModel
     {
         public string BrandName { get; set; }
-        public string BrandDescription { get; set; }
+        public string Description { get; set; }
+        public string ImageBrandPath { get; set; }
 
         public ObservableCollection<ModelsModel> ModelsModels { get; set; }
     }

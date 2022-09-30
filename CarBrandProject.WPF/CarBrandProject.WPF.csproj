@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Stores\" />
+    <Folder Include="BrandIcons\" />
   </ItemGroup>
 
 </Project>

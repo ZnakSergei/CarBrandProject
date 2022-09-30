@@ -15,5 +15,7 @@ namespace CarBrandProject.WPF.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+
+        protected virtual void Dispose() { }
     }
 }
