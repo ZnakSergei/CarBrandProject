@@ -46,13 +46,11 @@ namespace CarBrandProject.WPF.ViewModels
             set
             {
                 _selectedBrand = value;
-                Models = Brands.FirstOrDefault(x => x.BrandName.Equals(_selectedBrand.BrandName)).BrandModel.BrandModels;
+                Models = Brands.FirstOrDefault(x => x.BrandName.Equals(_selectedBrand.BrandName)).BrandModel.BrandModels;                
                 OnPropertyChanged(nameof(SelectedBrand));
                 OnPropertyChanged(nameof(Models));
-                OnPropertyChanged(nameof(SelectedModel));
 
-                _selectedBrandStores.BrandStore = _selectedBrand.BrandModel;
-               
+                _selectedBrandStores.BrandStore = _selectedBrand.BrandModel;              
             }
         }
 
