@@ -17,7 +17,7 @@
             <components:BrandsListing DataContext="{Binding BrandViewModel}"/>
 
             <components:ModelsListing Grid.Column="1" 
-                                      DataContext="{Binding ModelsViewModel}"/>
+                                      DataContext="{Binding BrandViewModel}"/>
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>

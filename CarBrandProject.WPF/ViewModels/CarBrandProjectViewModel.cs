@@ -16,7 +16,7 @@ namespace CarBrandProject.WPF.ViewModels
 
         public CarBrandProjectViewModel(SelectedBrandStores _selectedBrandStores, SelectedModelStores _selectedModelStores)
         {
-            BrandViewModel = new BrandViewModel(_selectedBrandStores);
+            BrandViewModel = new BrandViewModel(_selectedBrandStores, _selectedModelStores);
             BrandDetailsViewModel = new BrandDetails(_selectedBrandStores);
             ModelsViewModel = new ModelsViewModel(_selectedModelStores);
             ModelDetails = new ModelDetails(_selectedModelStores);

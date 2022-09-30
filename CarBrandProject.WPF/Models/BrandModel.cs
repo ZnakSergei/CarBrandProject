@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarBrandProject.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace CarBrandProject.WPF.Models
         public string Description { get; set; }
         public string ImageBrandPath { get; set; }
 
-        public ObservableCollection<ModelsModel> ModelsModels { get; set; }
+        public ObservableCollection<ModelListingItemViewModel> BrandModels { get; set; }
     }
 }
