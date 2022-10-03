@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CarBrandProject.WPF.Components"
+             xmlns:local="clr-namespace:CarBrandProject.WPF.Components" xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -23,9 +23,37 @@
                 <ListView Grid.Row="1" 
                           ItemsSource="{Binding Models}"
                           SelectedItem="{Binding SelectedModel}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ModelName}"/>
+                            <Border Padding="5 10" TextBlock.FontSize="16">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding ModelName}"/>
+
+                                    <custom:DropdownMenu Grid.Column="1">
+                                        <Border Background="White" 
+                                                BorderBrush="Gray"
+                                                BorderThickness="1">
+                                            <StackPanel Orientation="Vertical">
+                                                <Button Content="Edit"
+                                                        Command="{Binding EditModelCommand}"/>
+                                                <Button Content="Delete"
+                                                        Command="{Binding DeleteModelCommand}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </custom:DropdownMenu>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
 

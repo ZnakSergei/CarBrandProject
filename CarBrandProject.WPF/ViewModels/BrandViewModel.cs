@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CarBrandProject.WPF.ViewModels
 {
@@ -28,11 +29,8 @@ namespace CarBrandProject.WPF.ViewModels
                 
                 _selectedModel = value;
                 OnPropertyChanged(nameof(SelectedModel));
-                if (_selectedModel == null)
-                {
-                    return;
-                }
-                _selectedModelStores.ModelStore = _selectedModel.ModelsModel;
+                
+                _selectedModelStores.ModelStore = _selectedModel?.ModelsModel;
                 
 
             }
@@ -46,11 +44,14 @@ namespace CarBrandProject.WPF.ViewModels
             set
             {
                 _selectedBrand = value;
-                Models = Brands.FirstOrDefault(x => x.BrandName.Equals(_selectedBrand.BrandName)).BrandModel.BrandModels;                
+                
+
+                Models = Brands.FirstOrDefault(x => x.BrandName.Equals(_selectedBrand?.BrandName))?.BrandModel.BrandModels;
+                
                 OnPropertyChanged(nameof(SelectedBrand));
                 OnPropertyChanged(nameof(Models));
 
-                _selectedBrandStores.BrandStore = _selectedBrand.BrandModel;              
+                _selectedBrandStores.BrandStore = _selectedBrand?.BrandModel;              
             }
         }
 
@@ -183,6 +184,8 @@ namespace CarBrandProject.WPF.ViewModels
 
         public string BrandName => BrandModel.BrandName;
 
+        public ICommand EditBrandCommand { get; set; }
+        public ICommand DeleteBrandCommand { get; set; }
         public BrandItemListing(BrandModel brandModel)
         {
             BrandModel = brandModel;
@@ -193,6 +196,7 @@ namespace CarBrandProject.WPF.ViewModels
     {
         private readonly SelectedBrandStores _selectedBrandStores;
         private BrandModel SelectedBrand => _selectedBrandStores.BrandStore;
+        public bool HasSelectedBrand => SelectedBrand != null;
         public string BrandName => SelectedBrand?.BrandName ?? "Unknown";
         public string Description => SelectedBrand?.Description ?? "Unknown";
         public string ImageBrandPath => SelectedBrand?.ImageBrandPath;
