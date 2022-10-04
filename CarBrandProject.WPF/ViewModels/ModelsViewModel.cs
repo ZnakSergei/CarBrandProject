@@ -10,67 +10,67 @@ using System.Windows.Input;
 
 namespace CarBrandProject.WPF.ViewModels
 {
-    public class ModelsViewModel : BaseViewModel
-    {
-        public ObservableCollection<ModelListingItemViewModel> Models { get; set; }
-        private readonly SelectedModelStores _selectedModelStore;
+    //public class ModelsViewModel : BaseViewModel
+    //{
+    //    public ObservableCollection<ModelListingItemViewModel> Models { get; set; }
+    //    private readonly SelectedModelStores _selectedModelStore;
 
-        private ModelListingItemViewModel _selectedModel;
-        public ModelListingItemViewModel SelectedModel
-        {
-            get
-            {
-                return _selectedModel;
-            }
-            set
-            {
-                _selectedModel = value;
-                OnPropertyChanged(nameof(SelectedModel));
+    //    private ModelListingItemViewModel _selectedModel;
+    //    public ModelListingItemViewModel SelectedModel
+    //    {
+    //        get
+    //        {
+    //            return _selectedModel;
+    //        }
+    //        set
+    //        {
+    //            _selectedModel = value;
+    //            OnPropertyChanged(nameof(SelectedModel));
 
-                _selectedModelStore.ModelStore = _selectedModel.ModelsModel;
-            }
-        }
-        public ModelsViewModel(SelectedModelStores selectedModelStores)
-        {
-            Models = new ObservableCollection<ModelListingItemViewModel>();
+    //            _selectedModelStore.ModelStore = _selectedModel.ModelsModel;
+    //        }
+    //    }
+    //    public ModelsViewModel(SelectedModelStores selectedModelStores)
+    //    {
+    //        Models = new ObservableCollection<ModelListingItemViewModel>();
 
-            Models.Add(new ModelListingItemViewModel( new ModelsModel()
-            {
-                ModelName = "Model1",
-                TypeOfFuel = "Gas",
-                DateonMarket = "12.11.2012",
-                ModelClass = "Family car",
-                Price = 12000,
-                PassangerCapacity = 5,
-                IsAvalable = true
-            }));
+    //        Models.Add(new ModelListingItemViewModel( new ModelsModel()
+    //        {
+    //            ModelName = "Model1",
+    //            TypeOfFuel = "Gas",
+    //            DateonMarket = "12.11.2012",
+    //            ModelClass = "Family car",
+    //            Price = 12000,
+    //            PassangerCapacity = 5,
+    //            IsAvalable = true
+    //        }));
 
-            Models.Add(new ModelListingItemViewModel(new ModelsModel()
-            {
-                ModelName = "Model2",
-                TypeOfFuel = "Gas",
-                DateonMarket = "12.11.2012",
-                ModelClass = "Family car",
-                Price = 12000,
-                PassangerCapacity = 5,
-                IsAvalable = true
-            }));
+    //        Models.Add(new ModelListingItemViewModel(new ModelsModel()
+    //        {
+    //            ModelName = "Model2",
+    //            TypeOfFuel = "Gas",
+    //            DateonMarket = "12.11.2012",
+    //            ModelClass = "Family car",
+    //            Price = 12000,
+    //            PassangerCapacity = 5,
+    //            IsAvalable = true
+    //        }));
 
-            Models.Add(new ModelListingItemViewModel(new ModelsModel()
-            {
-                ModelName = "Model3",
-                TypeOfFuel = "Gas",
-                DateonMarket = "12.11.2012",
-                ModelClass = "Family car",
-                Price = 12000,
-                PassangerCapacity = 5,
-                IsAvalable = true
-            }));
+    //        Models.Add(new ModelListingItemViewModel(new ModelsModel()
+    //        {
+    //            ModelName = "Model3",
+    //            TypeOfFuel = "Gas",
+    //            DateonMarket = "12.11.2012",
+    //            ModelClass = "Family car",
+    //            Price = 12000,
+    //            PassangerCapacity = 5,
+    //            IsAvalable = true
+    //        }));
 
-            _selectedModelStore = selectedModelStores;
-        }
+    //        _selectedModelStore = selectedModelStores;
+    //    }
 
-    }
+    //}
     public class ModelListingItemViewModel : BaseViewModel
     {
         public ModelsModel ModelsModel { get; set; }
@@ -92,7 +92,7 @@ namespace CarBrandProject.WPF.ViewModels
         public bool HasSelectedModel => SelectedModel != null;
         public string ModelName => SelectedModel?.ModelName ?? "Unknown";
         public string TypeOfFuel => SelectedModel?.TypeOfFuel ?? "Unknown";
-        public string DateonMarket => SelectedModel?.DateonMarket;
+        public string DateOnMarket => SelectedModel?.DateOnMarket;
         public string ModelClass => SelectedModel?.ModelClass ?? "Unknown";
         public int Price => SelectedModel?.Price ?? 0;
         public int PassangerCapacity => SelectedModel?.PassangerCapacity ?? 0;
@@ -115,7 +115,7 @@ namespace CarBrandProject.WPF.ViewModels
         {
             OnPropertyChanged(nameof(ModelName));
             OnPropertyChanged(nameof(TypeOfFuel));
-            OnPropertyChanged(nameof(DateonMarket));
+            OnPropertyChanged(nameof(DateOnMarket));
             OnPropertyChanged(nameof(ModelClass));
             OnPropertyChanged(nameof(Price));
             OnPropertyChanged(nameof(PassangerCapacity));

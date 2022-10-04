@@ -3,10 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarBrandProject.WPF" xmlns:views="clr-namespace:CarBrandProject.WPF.Views"
+        xmlns:local="clr-namespace:CarBrandProject.WPF" 
+        xmlns:views="clr-namespace:CarBrandProject.WPF.Views" 
+        xmlns:vms="clr-namespace:CarBrandProject.WPF.ViewModels" 
+        xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <views:CarBrandProjectView/>
-    </Grid>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vms:AddBrandViewModel}">
+            <views:AddBrandView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EditBrandDetailsViewModel}">
+            <views:EditBrandView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:AddModelViewModel}">
+            <views:AddModelView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:EditModelDetailsViewModel}">
+            <views:EditModelView/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                  HorizontalScrollBarVisibility="Auto">
+        <Grid>
+
+            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
+                <ContentControl Margin="15"
+                                Content="{Binding CurrentViewModel}"/>
+            </modalcontrol:Modal>
+            
+            <views:CarBrandProjectView  Margin="5"
+                DataContext="{Binding CarBrandProjectViewModel}"/>
+            <!--<views:AddModelView/>-->
+            <!--<views:EditModelView/>-->
+            <!--<views:AddBrandView/>-->
+            <!--<views:EditBrandView/>-->
+        </Grid>
+    </ScrollViewer>
+   
 </Window>

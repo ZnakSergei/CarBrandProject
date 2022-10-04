@@ -11,14 +11,14 @@ namespace CarBrandProject.WPF.ViewModels
     {
         public BrandViewModel BrandViewModel { get; set; }
         public BrandDetails BrandDetailsViewModel { get; set; }
-        public ModelsViewModel ModelsViewModel { get; set; }
+        //public ModelsViewModel ModelsViewModel { get; set; }
         public ModelDetails ModelDetails { get; set; }
 
         public CarBrandProjectViewModel(SelectedBrandStores _selectedBrandStores, SelectedModelStores _selectedModelStores)
         {
             BrandViewModel = new BrandViewModel(_selectedBrandStores, _selectedModelStores);
             BrandDetailsViewModel = new BrandDetails(_selectedBrandStores);
-            ModelsViewModel = new ModelsViewModel(_selectedModelStores);
+            //ModelsViewModel = new ModelsViewModel(_selectedModelStores);
             ModelDetails = new ModelDetails(_selectedModelStores);
         }
     }

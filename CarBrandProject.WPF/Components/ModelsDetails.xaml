@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border BorderBrush="gray" BorderThickness="1" Margin="5">
-            <Grid>
+            <Grid Grid.IsSharedSizeScope="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -21,80 +21,86 @@
 
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="The name of model:"/>
-                    <TextBlock  Grid.Column="1" Text="{Binding ModelName}"                               />
+                    <TextBlock  Grid.Column="1" Margin="20 0 0 0"
+                                Text="{Binding ModelName}"                               />
                 </Grid>
 
                 <Grid Grid.Row="1" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
 
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Type of fuel:"/>
 
-                    <TextBlock Grid.Column="1" Text="{Binding TypeOfFuel}"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
+                               Text="{Binding TypeOfFuel}"/>
 
                 </Grid>
 
                 <Grid Grid.Row="2" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Date on the market:"/>
-                    <TextBlock Grid.Column="1" Text="{Binding DateonMarket}"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
+                               Text="{Binding DateOnMarket}"/>
 
                 </Grid>
 
                 <Grid Grid.Row="3" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Car class:"/>
-                    <TextBlock Grid.Column="1" Text="{Binding ModelClass}"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
+                               Text="{Binding ModelClass}"/>
 
                 </Grid>
 
                 <Grid Grid.Row="4" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Price:"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Price}"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
+                               Text="{Binding Price}"/>
                 </Grid>
 
 
                 <Grid Grid.Row="5" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Passenger capacity:"/>
-                    <TextBlock Grid.Column="1" 
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding PassangerCapacity}"/>
 
                 </Grid>
 
                 <Grid Grid.Row="6" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="Available:"/>
-                    <TextBlock Grid.Column="1" Text="{Binding IsAvalable}"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0"
+                               Text="{Binding IsAvalable}"/>
 
                 </Grid>
             </Grid>

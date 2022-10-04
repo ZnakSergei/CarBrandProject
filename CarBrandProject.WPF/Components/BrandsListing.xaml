@@ -13,6 +13,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Brands" FontSize="24"
@@ -55,6 +56,14 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+
+                <Button Grid.Row="2" Height="40" Width="50"                       
+                        HorizontalAlignment="Right" Margin="5"
+                        Command="{Binding AddBrandCommand}">
+                    <TextBlock Text="Add brand" TextWrapping="Wrap"/>
+                </Button>
+                
             </Grid>
         </Border>
     </Grid>

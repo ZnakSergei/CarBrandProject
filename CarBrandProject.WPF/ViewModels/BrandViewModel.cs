@@ -71,7 +71,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand1Model1",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -81,7 +81,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand1Model2",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -91,7 +91,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand1Model3",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -108,7 +108,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand2Model1",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -118,7 +118,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand2Model2",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -128,7 +128,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand2Model3",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -145,7 +145,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand3Model1",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -155,7 +155,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand3Model2",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -165,7 +165,7 @@ namespace CarBrandProject.WPF.ViewModels
                     {
                         ModelName = "Brand3Model3",
                         TypeOfFuel = "Gas",
-                        DateonMarket = "12.11.2012",
+                        DateOnMarket = "12.11.2012",
                         ModelClass = "Family car",
                         Price = 12000,
                         PassangerCapacity = 5,
@@ -173,6 +173,7 @@ namespace CarBrandProject.WPF.ViewModels
                      })
                 }
             }));
+
             _selectedBrandStores = selectedBrandStores;
             _selectedModelStores = selectedModelStores;
         }
