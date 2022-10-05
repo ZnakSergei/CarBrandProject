@@ -1,8 +1,12 @@
-﻿using System;
+﻿using CarBrandProject.WPF.Commands;
+using CarBrandProject.WPF.Models;
+using CarBrandProject.WPF.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CarBrandProject.WPF.ViewModels
 {
@@ -10,9 +14,16 @@ namespace CarBrandProject.WPF.ViewModels
     {
         public BrandDetailsFormViewModel BrandDetailsFormViewModel { get; set; }
 
-        public EditBrandDetailsViewModel()
+        public EditBrandDetailsViewModel(BrandModel brandModel, ModalNavigationStore modalNavigationStore)
         {
-            BrandDetailsFormViewModel = new BrandDetailsFormViewModel();
+            ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
+
+            BrandDetailsFormViewModel = new BrandDetailsFormViewModel(null, cancelCommand)
+            {
+                BrandName = brandModel.BrandName,
+                BrandDescription = brandModel.Description,
+                ImagePath = brandModel.ImageBrandPath
+            };
         }
     }
 }

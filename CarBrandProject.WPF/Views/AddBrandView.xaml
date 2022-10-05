@@ -16,7 +16,8 @@
 
             <TextBlock Text="Add brand" FontSize="20"/>
 
-            <components:BrandDetailsForm Grid.Row="1"/>
+            <components:BrandDetailsForm Grid.Row="1"
+                                         DataContext="{Binding BrandDetailsFormViewModel}"/>
         </Grid>
     </Border>
 </UserControl>

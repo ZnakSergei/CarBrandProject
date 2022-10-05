@@ -31,7 +31,7 @@ namespace CarBrandProject.WPF
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_selectedBrandStores, _selectedModelStores))
+                DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_selectedBrandStores, _selectedModelStores, _modalNavigationStore))
             };
             MainWindow.Show();
             base.OnStartup(e);

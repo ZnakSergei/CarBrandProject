@@ -29,30 +29,7 @@
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Padding="5 10" TextBlock.FontSize="16">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Text="{Binding BrandName}"/>
-
-                                    <custom:DropdownMenu Grid.Column="1">
-                                        <Border Background="White" 
-                                                BorderBrush="Gray"
-                                                BorderThickness="1">
-                                            <StackPanel Orientation="Vertical">
-                                                <Button Content="Edit"
-                                                        Command="{Binding EditBrandCommand}"/>
-                                                <Button Content="Delete"
-                                                        Command="{Binding DeleteBrandCommand}"/>
-                                            </StackPanel>
-                                        </Border>
-                                    </custom:DropdownMenu>
-                                </Grid>
-                            </Border>
-
+                            <local:BrandsListingItem/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

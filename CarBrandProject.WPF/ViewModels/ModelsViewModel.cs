@@ -34,7 +34,7 @@ namespace CarBrandProject.WPF.ViewModels
     //    {
     //        Models = new ObservableCollection<ModelListingItemViewModel>();
 
-    //        Models.Add(new ModelListingItemViewModel( new ModelsModel()
+    //        Models.Add(new ModelListingItemViewModel(new ModelsModel()
     //        {
     //            ModelName = "Model1",
     //            TypeOfFuel = "Gas",
@@ -78,9 +78,11 @@ namespace CarBrandProject.WPF.ViewModels
         public string ModelName => ModelsModel.ModelName;
         public ICommand EditModelCommand { get; set; }
         public ICommand DeleteModelCommand { get; set; }
-        public ModelListingItemViewModel(ModelsModel modelsModel)
+        public ModelListingItemViewModel(ModelsModel modelsModel, ICommand editModelCommand)
         {
             ModelsModel = modelsModel;
+            EditModelCommand = editModelCommand;
+            
         }
 
     }

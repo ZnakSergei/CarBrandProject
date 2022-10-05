@@ -79,6 +79,7 @@ namespace CarBrandProject.WPF.ViewModels
         }
 
         private bool _isAvalable;
+        
         public bool IsAvalable
         {
             get { return _isAvalable; }
@@ -90,6 +91,12 @@ namespace CarBrandProject.WPF.ViewModels
         }
 
         public ICommand SubmitModelCommand { get; set; }
-        public ICommand CancelModelCommand { get; set; }
+        public ICommand CancelCommand { get; set; }
+
+        public ModelDetailsFormViewModel(ICommand submitModelCommand, ICommand cancelCommand)
+        {
+            SubmitModelCommand = submitModelCommand;
+            CancelCommand = cancelCommand;
+        }
     }
 }

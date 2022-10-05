@@ -32,6 +32,7 @@ namespace CarBrandProject.WPF.ViewModels
         }
 
         private string _imagePath;
+
         public string ImagePath
         {
             get { return _imagePath; }
@@ -43,6 +44,12 @@ namespace CarBrandProject.WPF.ViewModels
         }
 
         public ICommand SubmitBrandCommand { get; set; }
-        public ICommand CancelBrandCommand { get; set; }
+        public ICommand CancelCommand { get; set; }
+
+        public BrandDetailsFormViewModel(ICommand submitBrandCommand, ICommand cancelBrandCommand)
+        {
+            SubmitBrandCommand = submitBrandCommand;
+            CancelCommand = cancelBrandCommand;
+        }
     }
 }
