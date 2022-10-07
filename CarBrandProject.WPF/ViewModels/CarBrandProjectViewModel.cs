@@ -10,17 +10,22 @@ namespace CarBrandProject.WPF.ViewModels
 {
     public class CarBrandProjectViewModel : BaseViewModel
     {
+        private BrandsStores brandsStores;
+        private SelectedBrandStores selectedBrandStores;
+        private SelectedModelStores selectedModelStores;
+        private ModalNavigationStore modalNavigationStore;
+
         public BrandViewModel BrandViewModel { get; set; }
         public BrandDetails BrandDetailsViewModel { get; set; }
         //public ModelsViewModel ModelsViewModel { get; set; }
         public ModelDetails ModelDetails { get; set; }
         
-        public CarBrandProjectViewModel(SelectedBrandStores _selectedBrandStores, SelectedModelStores _selectedModelStores, ModalNavigationStore modalNavigationStore)
+        public CarBrandProjectViewModel(BrandsStores brandsStores, SelectedBrandStores selectedBrandStores, ModelsStore modelsStore, SelectedModelStores selectedModelStores, ModalNavigationStore modalNavigationStore)
         {
-            BrandViewModel = new BrandViewModel(_selectedBrandStores, _selectedModelStores, modalNavigationStore);
-            BrandDetailsViewModel = new BrandDetails(_selectedBrandStores);
+            BrandViewModel = new BrandViewModel(brandsStores ,selectedBrandStores, modelsStore, selectedModelStores, modalNavigationStore);
+            BrandDetailsViewModel = new BrandDetails(selectedBrandStores);
             //ModelsViewModel = new ModelsViewModel(_selectedModelStores);
-            ModelDetails = new ModelDetails(_selectedModelStores);
+            ModelDetails = new ModelDetails(selectedModelStores);
         }
     }
 }

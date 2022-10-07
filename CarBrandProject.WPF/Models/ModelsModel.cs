@@ -8,6 +8,17 @@ namespace CarBrandProject.WPF.Models
 {
     public class ModelsModel
     {
+        public ModelsModel(string modelName, string typeOfFuel, string dateOnMarket, string modelClass, int price, int passangerCapacity, bool isAvalable)
+        {
+            ModelName = modelName;
+            TypeOfFuel = typeOfFuel;
+            DateOnMarket = dateOnMarket;
+            ModelClass = modelClass;
+            Price = price;
+            PassangerCapacity = passangerCapacity;
+            IsAvalable = isAvalable;
+        }
+
         public string ModelName { get; set; }
         public string TypeOfFuel { get; set; }
         public string DateOnMarket { get; set; }

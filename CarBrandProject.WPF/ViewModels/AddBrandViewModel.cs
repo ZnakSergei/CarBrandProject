@@ -12,10 +12,11 @@ namespace CarBrandProject.WPF.ViewModels
     public class AddBrandViewModel : BaseViewModel
     {
         public BrandDetailsFormViewModel BrandDetailsFormViewModel { get; set; }
-        public AddBrandViewModel(ModalNavigationStore modalNavigationStore)
+        public AddBrandViewModel(BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
+            ICommand submitBrandCommand = new SubmitAddBrandCommand(this, brandsStores, modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
-            BrandDetailsFormViewModel = new BrandDetailsFormViewModel(null, cancelCommand);
+            BrandDetailsFormViewModel = new BrandDetailsFormViewModel(submitBrandCommand, cancelCommand);
         }
 
         

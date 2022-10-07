@@ -20,18 +20,24 @@ namespace CarBrandProject.WPF
 
         private readonly ModalNavigationStore _modalNavigationStore;
 
+        private readonly BrandsStores _brandsStores;
+        private readonly ModelsStore _modelsStore;
+
         public App()
         {
             _selectedBrandStores = new SelectedBrandStores();
             _selectedModelStores = new SelectedModelStores();
 
             _modalNavigationStore = new ModalNavigationStore();
+
+            _brandsStores = new BrandsStores();
+            _modelsStore = new ModelsStore();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_selectedBrandStores, _selectedModelStores, _modalNavigationStore))
+                DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_brandsStores, _selectedBrandStores, _modelsStore, _selectedModelStores, _modalNavigationStore))
             };
             MainWindow.Show();
             base.OnStartup(e);

@@ -15,9 +15,10 @@ namespace CarBrandProject.WPF.ViewModels
         public ModelDetailsFormViewModel ModelDetailsFormViewModel { get; set; }
         public EditModelDetailsViewModel(ModelsModel modelsModel, ModalNavigationStore modalNavigationStore)
         {
+            ICommand submitModelCommand = new SubmitEditModelCommand(modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
 
-            ModelDetailsFormViewModel = new ModelDetailsFormViewModel(null, cancelCommand)
+            ModelDetailsFormViewModel = new ModelDetailsFormViewModel(submitModelCommand, cancelCommand)
             {
                 ModelName = modelsModel.ModelName,
                 TypeOfFuel = modelsModel.TypeOfFuel,

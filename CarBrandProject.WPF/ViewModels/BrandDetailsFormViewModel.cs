@@ -43,6 +43,17 @@ namespace CarBrandProject.WPF.ViewModels
             }
         }
 
+        private ModelListingItemViewModel modelListingItemViewModel;
+        public ModelListingItemViewModel ModelListingItemViewModel
+        {
+            get { return modelListingItemViewModel; }
+            set
+            {
+                modelListingItemViewModel = value;
+                OnPropertyChanged(nameof(ModelListingItemViewModel));
+            }
+        }
+
         public ICommand SubmitBrandCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
