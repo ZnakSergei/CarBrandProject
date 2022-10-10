@@ -35,13 +35,10 @@ namespace CarBrandProject.WPF.ViewModels
             get { return _selectedModel; }
             set
             {
-                
                 _selectedModel = value;
                 OnPropertyChanged(nameof(SelectedModel));
                 
                 _selectedModelStores.ModelStore = _selectedModel?.ModelsModel;
-                
-
             }
         }
 
@@ -53,7 +50,6 @@ namespace CarBrandProject.WPF.ViewModels
             set
             {
                 _selectedBrand = value;
-                
 
                 Models = Brands.FirstOrDefault(x => x.BrandName.Equals(_selectedBrand?.BrandName))?.BrandModel.BrandModels;
                 
@@ -85,7 +81,6 @@ namespace CarBrandProject.WPF.ViewModels
 
             AddBrandCommand = new OpenAddBrandCommand(brandsStores, modalNavigationStore);
             AddModelCommand = new OpenAddModelCommand(modelsStore, modalNavigationStore);
-            
         }       
 
         private void AddBrand(BrandModel brandModel)
