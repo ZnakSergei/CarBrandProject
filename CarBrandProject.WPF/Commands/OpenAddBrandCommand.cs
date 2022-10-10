@@ -13,13 +13,11 @@ namespace CarBrandProject.WPF.Commands
     {
         private readonly BrandsStores _brandsStores;
         private readonly ModalNavigationStore _modalNavigationStore;
-
         public OpenAddBrandCommand(BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
             _brandsStores = brandsStores;
             _modalNavigationStore = modalNavigationStore;
         }
-
         public override void Execute(object? parameter)
         {
             AddBrandViewModel addBrandViewModel = new AddBrandViewModel(_brandsStores , _modalNavigationStore);

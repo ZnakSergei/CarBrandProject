@@ -11,19 +11,20 @@ namespace CarBrandProject.WPF.Commands
 {
     public class OpenEditModelCommand : BaseCommand
     {
+        private readonly ModelListingItemViewModel _modelListingItemViewModel;
+        private readonly ModelsStore _modelsStore;
         private readonly ModalNavigationStore _modalNavigationStore;
-        private readonly ModelsModel _modelsModel;
-
-        public OpenEditModelCommand(ModelsModel modelsModel, ModalNavigationStore modalNavigationStore)
+        public OpenEditModelCommand(ModelListingItemViewModel modelListingItemViewModel, ModelsStore modelsStore, ModalNavigationStore modalNavigationStore)
         {
-            
+            _modelListingItemViewModel = modelListingItemViewModel;
+            _modelsStore = modelsStore;
             _modalNavigationStore = modalNavigationStore;
-            _modelsModel = modelsModel;
+           
         }
-
         public override void Execute(object? parameter)
         {
-            EditModelDetailsViewModel editModelDetailsViewModel = new EditModelDetailsViewModel(_modelsModel, _modalNavigationStore);
+            ModelsModel modelsModel = _modelListingItemViewModel.ModelsModel;
+            EditModelDetailsViewModel editModelDetailsViewModel = new EditModelDetailsViewModel(modelsModel, _modelsStore, _modalNavigationStore);
             _modalNavigationStore.CurrentViewModel = editModelDetailsViewModel;
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarBrandProject.WPF.Models;
+using CarBrandProject.WPF.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,20 @@ namespace CarBrandProject.WPF.Components
     /// </summary>
     public partial class ModelsListingItem : UserControl
     {
+        private ModelsModel modelsModel;
+        private ModelsStore modelsStore;
+        private ModalNavigationStore modalNavigationStore;
+
         public ModelsListingItem()
         {
             InitializeComponent();
+        }
+
+        public ModelsListingItem(ModelsModel modelsModel, ModelsStore modelsStore, ModalNavigationStore modalNavigationStore)
+        {
+            this.modelsModel = modelsModel;
+            this.modelsStore = modelsStore;
+            this.modalNavigationStore = modalNavigationStore;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

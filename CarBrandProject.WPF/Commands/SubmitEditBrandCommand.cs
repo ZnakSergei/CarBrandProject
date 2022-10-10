@@ -15,19 +15,18 @@ namespace CarBrandProject.WPF.Commands
         private readonly EditBrandDetailsViewModel _editBrandDetailsViewModel;
         private readonly BrandsStores _brandsStores;
         private ModalNavigationStore _modalNavigationStore;
-
         public SubmitEditBrandCommand(EditBrandDetailsViewModel editBrandDetailsViewModel, BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
             _editBrandDetailsViewModel = editBrandDetailsViewModel;
             _brandsStores = brandsStores;
             _modalNavigationStore = modalNavigationStore;
         }
-
         public override async Task ExecuteAsync(object parameter)
         {
             //TODO: Edit brand to database
             BrandDetailsFormViewModel brandFormViewModel = _editBrandDetailsViewModel.BrandDetailsFormViewModel;
-            BrandModel brandModel = new BrandModel(Guid.NewGuid(), brandFormViewModel.BrandName, brandFormViewModel.BrandDescription, brandFormViewModel.ImagePath,
+           
+            BrandModel brandModel = new BrandModel(_editBrandDetailsViewModel.BrandId, brandFormViewModel.BrandName, brandFormViewModel.BrandDescription, brandFormViewModel.ImagePath,
                 new ObservableCollection<ModelListingItemViewModel>());
             
             try

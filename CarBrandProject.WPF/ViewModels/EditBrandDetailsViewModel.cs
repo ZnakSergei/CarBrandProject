@@ -12,10 +12,12 @@ namespace CarBrandProject.WPF.ViewModels
 {
     public class EditBrandDetailsViewModel : BaseViewModel
     {
+        public Guid BrandId { get; }
         public BrandDetailsFormViewModel BrandDetailsFormViewModel { get; set; }
-
         public EditBrandDetailsViewModel(BrandModel brandModel, BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
+            BrandId = brandModel.Id;
+
             ICommand submitBrandCommand = new SubmitEditBrandCommand(this, brandsStores, modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
 
@@ -23,7 +25,7 @@ namespace CarBrandProject.WPF.ViewModels
             {
                 BrandName = brandModel.BrandName,
                 BrandDescription = brandModel.Description,
-                ImagePath = brandModel.ImageBrandPath
+                ImagePath = brandModel.ImageBrandPath,                
             };
         }
     }

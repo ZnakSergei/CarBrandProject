@@ -17,14 +17,12 @@ namespace CarBrandProject.WPF.ViewModels
 
         public BrandViewModel BrandViewModel { get; set; }
         public BrandDetails BrandDetailsViewModel { get; set; }
-        //public ModelsViewModel ModelsViewModel { get; set; }
         public ModelDetails ModelDetails { get; set; }
         
         public CarBrandProjectViewModel(BrandsStores brandsStores, SelectedBrandStores selectedBrandStores, ModelsStore modelsStore, SelectedModelStores selectedModelStores, ModalNavigationStore modalNavigationStore)
         {
             BrandViewModel = new BrandViewModel(brandsStores ,selectedBrandStores, modelsStore, selectedModelStores, modalNavigationStore);
             BrandDetailsViewModel = new BrandDetails(selectedBrandStores);
-            //ModelsViewModel = new ModelsViewModel(_selectedModelStores);
             ModelDetails = new ModelDetails(selectedModelStores);
         }
     }

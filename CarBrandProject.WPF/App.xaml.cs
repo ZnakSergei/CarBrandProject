@@ -25,13 +25,12 @@ namespace CarBrandProject.WPF
 
         public App()
         {
-            _selectedBrandStores = new SelectedBrandStores();
-            _selectedModelStores = new SelectedModelStores();
-
-            _modalNavigationStore = new ModalNavigationStore();
-
             _brandsStores = new BrandsStores();
             _modelsStore = new ModelsStore();
+            _selectedBrandStores = new SelectedBrandStores(_brandsStores);
+            _selectedModelStores = new SelectedModelStores(_modelsStore);
+
+            _modalNavigationStore = new ModalNavigationStore();     
         }
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -39,6 +38,7 @@ namespace CarBrandProject.WPF
             {
                 DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_brandsStores, _selectedBrandStores, _modelsStore, _selectedModelStores, _modalNavigationStore))
             };
+
             MainWindow.Show();
             base.OnStartup(e);
         }

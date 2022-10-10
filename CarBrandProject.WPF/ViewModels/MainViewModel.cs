@@ -18,9 +18,7 @@ namespace CarBrandProject.WPF.ViewModels
             _modalNavigationStore = modalNavigationBrandStore;
             CarBrandProjectViewModel = carBrandProjectViewModel;
 
-            _modalNavigationStore.CurrentViewModelChanged += _modalNavigationStore_CurrentViewModelChanged;
-
-            
+            _modalNavigationStore.CurrentViewModelChanged += _modalNavigationStore_CurrentViewModelChanged;        
         }
 
         protected override void Dispose()

@@ -16,14 +16,12 @@ namespace CarBrandProject.WPF.Commands
         private readonly AddBrandViewModel _addBrandViewModel;
         private readonly BrandsStores _brandsStores;
         private ModalNavigationStore _modalNavigationStore;
-
         public SubmitAddBrandCommand(AddBrandViewModel addBrandViewModel, BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
             _addBrandViewModel = addBrandViewModel;
             _brandsStores = brandsStores;
             _modalNavigationStore = modalNavigationStore;
         }
-
         public override async Task ExecuteAsync(object parameter)
         {
             BrandDetailsFormViewModel brandFormViewModel = _addBrandViewModel.BrandDetailsFormViewModel;

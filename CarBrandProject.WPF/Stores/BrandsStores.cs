@@ -16,7 +16,6 @@ namespace CarBrandProject.WPF.Stores
         {
             BrandAdded?.Invoke(brandModel);
         }
-
         public async Task Update(BrandModel brandModel)
         {
             BrandEdited?.Invoke(brandModel);

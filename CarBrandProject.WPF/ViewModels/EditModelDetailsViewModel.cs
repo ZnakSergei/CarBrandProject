@@ -12,10 +12,17 @@ namespace CarBrandProject.WPF.ViewModels
 {
     public class EditModelDetailsViewModel : BaseViewModel
     {
+        private ModelsModel _modelsModel;
+        public Guid ModelId { get; }
+       
+        private ModalNavigationStore modalNavigationStore;
+
         public ModelDetailsFormViewModel ModelDetailsFormViewModel { get; set; }
-        public EditModelDetailsViewModel(ModelsModel modelsModel, ModalNavigationStore modalNavigationStore)
+        public EditModelDetailsViewModel(ModelsModel modelsModel, ModelsStore modelsStore, ModalNavigationStore modalNavigationStore)
         {
-            ICommand submitModelCommand = new SubmitEditModelCommand(modalNavigationStore);
+            ModelId = modelsModel.ModelId;
+
+            ICommand submitModelCommand = new SubmitEditModelCommand(this, modelsStore, modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
 
             ModelDetailsFormViewModel = new ModelDetailsFormViewModel(submitModelCommand, cancelCommand)

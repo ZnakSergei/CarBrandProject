@@ -9,7 +9,9 @@ namespace CarBrandProject.WPF.Stores
 {
     public class SelectedBrandStores
     {
-        private BrandModel _brandStores;
+        private readonly BrandsStores _brandsStores;
+
+        private BrandModel _brandStores;     
         public BrandModel BrandStore
         {
             get
@@ -24,5 +26,20 @@ namespace CarBrandProject.WPF.Stores
         }
 
         public event Action BrandStoresChanged;
+
+        public SelectedBrandStores(BrandsStores brandsStores)
+        {
+            _brandsStores = brandsStores;
+
+            _brandsStores.BrandEdited += _brandsStores_BrandEdited;
+        }
+
+        private void _brandsStores_BrandEdited(BrandModel brandModel)
+        {
+            if (brandModel.Id == BrandStore?.Id)
+            {
+                BrandStore = brandModel;
+            }
+        }
     }
 }

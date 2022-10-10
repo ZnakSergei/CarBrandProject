@@ -10,10 +10,15 @@ namespace CarBrandProject.WPF.Stores
     public class ModelsStore
     {
         public event Action<ModelsModel> ModelAdded;
+        public event Action<ModelsModel> ModelUpdate;
 
         public async Task Add(ModelsModel modelsModel)
         {
             ModelAdded?.Invoke(modelsModel);
+        }
+        public async Task Update(ModelsModel modelsModel)
+        {
+            ModelUpdate?.Invoke(modelsModel);
         }
     }
 }

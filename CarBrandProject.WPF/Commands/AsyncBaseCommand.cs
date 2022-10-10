@@ -16,7 +16,6 @@ namespace CarBrandProject.WPF.Commands
             }
             catch (Exception) { }          
         }
-
         public abstract Task ExecuteAsync(object parameter);
        
     }

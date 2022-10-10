@@ -17,8 +17,6 @@ namespace CarBrandProject.WPF.ViewModels
             ICommand submitBrandCommand = new SubmitAddBrandCommand(this, brandsStores, modalNavigationStore);
             ICommand cancelCommand = new CloseModalCommand(modalNavigationStore);
             BrandDetailsFormViewModel = new BrandDetailsFormViewModel(submitBrandCommand, cancelCommand);
-        }
-
-        
+        }    
     }
 }
