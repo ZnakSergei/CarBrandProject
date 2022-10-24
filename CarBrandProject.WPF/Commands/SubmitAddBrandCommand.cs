@@ -25,7 +25,7 @@ namespace CarBrandProject.WPF.Commands
         public override async Task ExecuteAsync(object parameter)
         {
             BrandDetailsFormViewModel brandFormViewModel = _addBrandViewModel.BrandDetailsFormViewModel;
-            BrandModel brandModel = new BrandModel(Guid.NewGuid(), brandFormViewModel.BrandName, brandFormViewModel.BrandDescription, brandFormViewModel.ImagePath,
+            BrandModel brandModel = new BrandModel(Guid.NewGuid(), brandFormViewModel.BrandName, brandFormViewModel.BrandDescription, brandFormViewModel?.ImagePath,
                 new ObservableCollection<ModelListingItemViewModel>());
             //TODO : Add brand to database
             try

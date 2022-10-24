@@ -33,7 +33,7 @@ namespace CarBrandProject.WPF.ViewModels
 
         private string _imagePath;
 
-        public string ImagePath
+        public string? ImagePath
         {
             get { return _imagePath; }
             set

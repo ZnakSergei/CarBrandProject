@@ -28,6 +28,7 @@ namespace CarBrandProject.WPF.ViewModels
         public ICommand AddBrandCommand { get; set; }
         public ICommand AddModelCommand { get; set; }
         public ICommand EditModelCommand { get; set; }
+        public ICommand LoadBrandCommand { get; set; }
 
         private ModelListingItemViewModel _selectedModel;
         public ModelListingItemViewModel SelectedModel
@@ -75,14 +76,35 @@ namespace CarBrandProject.WPF.ViewModels
             _brandsStores.BrandAdded += _brandsStores_BrandAdded;
             _brandsStores.BrandEdited += _brandsStores_BrandUpdated;
 
+            _brandsStores.BrandLoaded += _brandsStores_BrandLoaded;
+            
+
             _modelsStore.ModelAdded += _modelsStore_ModelAdded;
             _modelsStore.ModelUpdate += _modelsStore_ModelUpdate;
             
 
             AddBrandCommand = new OpenAddBrandCommand(brandsStores, modalNavigationStore);
             AddModelCommand = new OpenAddModelCommand(modelsStore, modalNavigationStore);
-        }       
+            LoadBrandCommand = new LoadBrandCommand(brandsStores);
+        }
 
+        private void _brandsStores_BrandLoaded()
+        {
+            Brands.Clear();
+
+            foreach (BrandModel brandModel in _brandsStores.brandModels)
+            {
+                AddBrand(brandModel);
+            }
+        }
+
+        public static BrandViewModel LoadBrandViewModel(BrandsStores brandsStores, SelectedBrandStores selectedBrandStores, ModelsStore modelsStore,
+            SelectedModelStores selectedModelStores, ModalNavigationStore modalNavigationStore)
+        {
+            BrandViewModel brandViewModel = new BrandViewModel(brandsStores, selectedBrandStores, modelsStore, selectedModelStores, modalNavigationStore);
+            brandViewModel.LoadBrandCommand.Execute(null);
+            return brandViewModel;
+        }
         private void AddBrand(BrandModel brandModel)
         {
             BrandItemListing brandItem = new BrandItemListing(brandModel, _brandsStores, _modalNavigationStore);
@@ -126,13 +148,24 @@ namespace CarBrandProject.WPF.ViewModels
         {
             _brandsStores.BrandAdded -= _brandsStores_BrandAdded;
             _brandsStores.BrandEdited -= _brandsStores_BrandUpdated;
+            _brandsStores.BrandLoaded += _brandsStores_BrandLoaded;
+            _brandsStores.BrandDeleted += _brandsStores_BrandDeleted;
 
             _modelsStore.ModelAdded -= _modelsStore_ModelAdded;
             _modelsStore.ModelUpdate -= _modelsStore_ModelUpdate;
 
             base.Dispose();
         }
-        
+
+        private void _brandsStores_BrandDeleted(Guid brandId)
+        {
+            BrandItemListing brandItemListing = Brands.FirstOrDefault(b => b.BrandModel.Id == brandId);
+
+            if (brandItemListing != null)
+            {
+                Brands.Remove(brandItemListing);
+            }
+        }
     }
 
     public class BrandItemListing : BaseViewModel
@@ -151,6 +184,7 @@ namespace CarBrandProject.WPF.ViewModels
             BrandModel = brandModel;
 
             EditBrandCommand = new OpenEditBrandCommand(this, brandsStores, modalNavigationStore);
+            DeleteBrandCommand = new DeleteBrandViewCommand(this, brandsStores);
         }
 
         public void Update(BrandModel brandModel)

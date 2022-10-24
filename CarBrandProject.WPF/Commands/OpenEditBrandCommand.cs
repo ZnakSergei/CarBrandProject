@@ -12,8 +12,8 @@ namespace CarBrandProject.WPF.Commands
     public class OpenEditBrandCommand : BaseCommand
     {
         private readonly ModalNavigationStore _modalNavigationStore;       
-        private BrandItemListing _brandItemListing;
-        private BrandsStores _brandsStores;
+        private readonly BrandItemListing _brandItemListing;
+        private readonly BrandsStores _brandsStores;
         public OpenEditBrandCommand(BrandItemListing brandItemListing, BrandsStores brandsStores, ModalNavigationStore modalNavigationStore)
         {
             _brandItemListing = brandItemListing;

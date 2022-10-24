@@ -46,7 +46,7 @@
             <TextBlock Text="Image path" FontSize="16"/>
 
             <TextBox Grid.Column="1" MinWidth="250" MaxWidth="800"
-                     Margin="20 0 0 0"/>
+                     Margin="20 0 0 0" Text="{Binding ImagePath}"/>
         </Grid>
 
         <WrapPanel Grid.Row="3" Margin="50 40 0 0">

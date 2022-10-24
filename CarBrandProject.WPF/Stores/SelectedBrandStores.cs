@@ -32,6 +32,15 @@ namespace CarBrandProject.WPF.Stores
             _brandsStores = brandsStores;
 
             _brandsStores.BrandEdited += _brandsStores_BrandEdited;
+            _brandsStores.BrandDeleted += _brandsStores_BrandDeleted;
+        }
+
+        private void _brandsStores_BrandDeleted(Guid brandId)
+        {
+            if (brandId == BrandStore?.Id)
+            {
+                BrandStore = null;
+            }
         }
 
         private void _brandsStores_BrandEdited(BrandModel brandModel)
