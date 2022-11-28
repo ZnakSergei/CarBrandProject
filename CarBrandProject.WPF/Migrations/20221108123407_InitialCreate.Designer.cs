@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBrandProject.WPF.Migrations
 {
     [DbContext(typeof(BrandsDbContext))]
-    [Migration("20221024112826_Initial")]
-    partial class Initial
+    [Migration("20221108123407_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,12 +34,47 @@ namespace CarBrandProject.WPF.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("BrandId");
 
                     b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("CarBrandProject.WPF.EntityFramework.DTOs.ModelDto", b =>
+                {
+                    b.Property<Guid>("ModelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DateOnMarket")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAvalable")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ModelClass")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ModelName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PassangerCapacity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TypeOfFuel")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ModelId");
+
+                    b.ToTable("Models");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,13 +3,8 @@ using CarBrandProject.WPF.Components;
 using CarBrandProject.WPF.Models;
 using CarBrandProject.WPF.Stores;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CarBrandProject.WPF.ViewModels
@@ -27,8 +22,8 @@ namespace CarBrandProject.WPF.ViewModels
        
         public ICommand AddBrandCommand { get; set; }
         public ICommand AddModelCommand { get; set; }
-        public ICommand EditModelCommand { get; set; }
         public ICommand LoadBrandCommand { get; set; }
+        public ICommand LoadModelCommand { get; set; }
 
         private ModelListingItemViewModel _selectedModel;
         public ModelListingItemViewModel SelectedModel
@@ -75,17 +70,30 @@ namespace CarBrandProject.WPF.ViewModels
 
             _brandsStores.BrandAdded += _brandsStores_BrandAdded;
             _brandsStores.BrandEdited += _brandsStores_BrandUpdated;
+            _brandsStores.BrandDeleted += _brandsStores_BrandDeleted;
 
             _brandsStores.BrandLoaded += _brandsStores_BrandLoaded;
+            _modelsStore.ModelsLoaded += _modelsStore_ModelsLoaded;
             
 
             _modelsStore.ModelAdded += _modelsStore_ModelAdded;
             _modelsStore.ModelUpdate += _modelsStore_ModelUpdate;
+            _modelsStore.ModelDelete += _modelsStore_ModelDelete;
             
 
             AddBrandCommand = new OpenAddBrandCommand(brandsStores, modalNavigationStore);
             AddModelCommand = new OpenAddModelCommand(modelsStore, modalNavigationStore);
             LoadBrandCommand = new LoadBrandCommand(brandsStores);
+            LoadModelCommand = new LoadModelCommand(modelsStore);
+        }
+
+        private void _modelsStore_ModelDelete(Guid modelId)
+        {
+            ModelListingItemViewModel modelsListingItem = Models.FirstOrDefault(b => b.ModelsModel.ModelId == modelId);
+            if (modelsListingItem != null)
+            {
+                Models.Remove(modelsListingItem);
+            }
         }
 
         private void _brandsStores_BrandLoaded()
@@ -97,12 +105,22 @@ namespace CarBrandProject.WPF.ViewModels
                 AddBrand(brandModel);
             }
         }
+        private void _brandsStores_BrandDeleted(Guid brandId)
+        {
+            BrandItemListing brandItemListing = Brands.FirstOrDefault(b => b.BrandModel.Id == brandId);
+
+            if (brandItemListing != null)
+            {
+                Brands.Remove(brandItemListing);
+            }
+        }
 
         public static BrandViewModel LoadBrandViewModel(BrandsStores brandsStores, SelectedBrandStores selectedBrandStores, ModelsStore modelsStore,
             SelectedModelStores selectedModelStores, ModalNavigationStore modalNavigationStore)
         {
             BrandViewModel brandViewModel = new BrandViewModel(brandsStores, selectedBrandStores, modelsStore, selectedModelStores, modalNavigationStore);
             brandViewModel.LoadBrandCommand.Execute(null);
+            
             return brandViewModel;
         }
         private void AddBrand(BrandModel brandModel)
@@ -123,6 +141,14 @@ namespace CarBrandProject.WPF.ViewModels
             if (brand != null)
             {
                 brand.Update(brandModel);
+            }
+        }
+        private void _modelsStore_ModelsLoaded()
+        {
+            Models.Clear();
+            foreach (var modelsModel in _modelsStore.modelsModels)
+            {
+                AddModels(modelsModel);
             }
         }
 
@@ -148,24 +174,16 @@ namespace CarBrandProject.WPF.ViewModels
         {
             _brandsStores.BrandAdded -= _brandsStores_BrandAdded;
             _brandsStores.BrandEdited -= _brandsStores_BrandUpdated;
-            _brandsStores.BrandLoaded += _brandsStores_BrandLoaded;
-            _brandsStores.BrandDeleted += _brandsStores_BrandDeleted;
+            _brandsStores.BrandLoaded -= _brandsStores_BrandLoaded;
+            _brandsStores.BrandDeleted -= _brandsStores_BrandDeleted;
 
+            _modelsStore.ModelsLoaded -= _modelsStore_ModelsLoaded;
             _modelsStore.ModelAdded -= _modelsStore_ModelAdded;
             _modelsStore.ModelUpdate -= _modelsStore_ModelUpdate;
+            _modelsStore.ModelDelete -= _modelsStore_ModelDelete;
 
             base.Dispose();
-        }
-
-        private void _brandsStores_BrandDeleted(Guid brandId)
-        {
-            BrandItemListing brandItemListing = Brands.FirstOrDefault(b => b.BrandModel.Id == brandId);
-
-            if (brandItemListing != null)
-            {
-                Brands.Remove(brandItemListing);
-            }
-        }
+        }       
     }
 
     public class BrandItemListing : BaseViewModel

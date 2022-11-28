@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace CarBrandProject.WPF.EntityFramework.DTOs
 {
-    internal class ModelDto
+    public class ModelDto
     {
+        [Key]
+        public Guid ModelId { get; set; }
+        public string ModelName { get; set; }
+        public string TypeOfFuel { get; set; }
+        public string DateOnMarket { get; set; }
+        public string ModelClass { get; set; }
+        public int Price { get; set; }
+        public int PassangerCapacity { get; set; }
+        public bool IsAvalable { get; set; }
+        
     }
 }

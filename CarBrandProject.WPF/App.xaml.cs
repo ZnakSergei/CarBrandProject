@@ -6,15 +6,7 @@ using CarBrandProject.WPF.Queries;
 using CarBrandProject.WPF.Stores;
 using CarBrandProject.WPF.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Printing;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
 
 namespace CarBrandProject.WPF
 {
@@ -23,19 +15,20 @@ namespace CarBrandProject.WPF
     /// </summary>
     public partial class App : Application
     {
-
         private readonly ModalNavigationStore _modalNavigationStore;
         private readonly BrandsDbContextFactory _brandsDbContextFactory;
-        private readonly IGetAllBrandsQuary _getAllBrandsQuary;
+        private readonly IGetAllBrandsQuery _getAllBrandsQuary;
         private readonly ICreateBrandCommand _createBrandCommand;
         private readonly IUpdateBrandCommand _updateBrandCommand;
         private readonly IDeleteBrandCommand _deleteBrandCommand;
-        
 
+        private readonly IGetAllModelsQuary _getAllModelsQuary;
+        private readonly ICreateModelCommand _createModelCommand;
+        private readonly IUpdateModelCommand _updateModelCommand;
+        private readonly IDeleteModelCommand _deleteModelCommand;
+        
         private readonly SelectedBrandStores _selectedBrandStores;
         private readonly SelectedModelStores _selectedModelStores;
-
-        
 
         private readonly BrandsStores _brandsStores;
         private readonly ModelsStore _modelsStore;
@@ -50,8 +43,9 @@ namespace CarBrandProject.WPF
             _createBrandCommand = new CreateBrandCommand(_brandsDbContextFactory);
             _updateBrandCommand = new UpdateBrandCommand(_brandsDbContextFactory);
             _deleteBrandCommand = new DeleteBrandCommand(_brandsDbContextFactory);
+            _createModelCommand = new CreateModelCommand(_brandsDbContextFactory);
             _brandsStores = new BrandsStores(_getAllBrandsQuary, _createBrandCommand, _updateBrandCommand, _deleteBrandCommand);
-            _modelsStore = new ModelsStore();
+            _modelsStore = new ModelsStore(_getAllModelsQuary, _createModelCommand, _updateModelCommand, _deleteModelCommand);
             _selectedBrandStores = new SelectedBrandStores(_brandsStores);
             _selectedModelStores = new SelectedModelStores(_modelsStore);
 
@@ -63,10 +57,16 @@ namespace CarBrandProject.WPF
             {
                 context.Database.Migrate();
             }
-                MainWindow = new MainWindow()
-                {
-                    DataContext = new MainViewModel(_modalNavigationStore, new CarBrandProjectViewModel(_brandsStores, _selectedBrandStores, _modelsStore, _selectedModelStores, _modalNavigationStore))
-                };
+
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_modalNavigationStore, 
+                new CarBrandProjectViewModel(_brandsStores,
+                _selectedBrandStores,
+                _modelsStore, 
+                _selectedModelStores, 
+                _modalNavigationStore))
+            };
 
             MainWindow.Show();
             base.OnStartup(e);

@@ -1,11 +1,5 @@
 ﻿using CarBrandProject.WPF.Stores;
 using CarBrandProject.WPF.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace CarBrandProject.WPF.Commands
 {

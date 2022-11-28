@@ -22,10 +22,11 @@
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="1.8*"/>
+                    <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
 
-                <components:BrandsDetails DataContext="{Binding BrandDetailsViewModel}"/>
+                <components:BrandsDetails 
+                    DataContext="{Binding BrandDetailsViewModel}"/>
 
                 <components:ModelsDetails Grid.Row="1" 
                                           DataContext="{Binding ModelDetails}"/>

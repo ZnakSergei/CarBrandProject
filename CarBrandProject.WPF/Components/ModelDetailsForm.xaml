@@ -6,6 +6,102 @@
              xmlns:local="clr-namespace:CarBrandProject.WPF.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="AddButton">
+            <Setter Property="Background" Value="#1B73C5"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.Foreground" Value="White"/>
+            <Setter Property="Content" Value="Add Brand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5" Padding="5"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#0155F8" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#1B73C5" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="CancelButton">
+            <Setter Property="Background" Value="#D2D2D2"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.Foreground" Value="Black"/>
+            <Setter Property="Content" Value="Add Brand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5" Padding="5"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#EEEAEA" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#D2D2D2" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid Grid.IsSharedSizeScope="True" Grid.Row ="1">
             <Grid.RowDefinitions>
@@ -106,8 +202,10 @@
 
             <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="50 20 0 0">
                 <Button Content="Submit" Margin="0 0 30 0"
+                        Style="{StaticResource AddButton}"
                         Command="{Binding SubmitModelCommand}"/>
                 <Button Content="Cancel" Margin="30 0 0 0"
+                        Style="{StaticResource CancelButton}"
                         Command="{Binding CancelCommand}"/>
             </StackPanel>
         </Grid>

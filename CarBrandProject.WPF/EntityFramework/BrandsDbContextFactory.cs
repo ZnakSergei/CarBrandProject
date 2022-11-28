@@ -1,12 +1,4 @@
-﻿using CarBrandProject.WPF.EntityFramework.DTOs;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CarBrandProject.WPF.EntityFramework
 {
@@ -21,8 +13,7 @@ namespace CarBrandProject.WPF.EntityFramework
         }
 
         public BrandsDbContext Create()
-        {
-            
+        {          
             return new BrandsDbContext(_option);
         }
     }

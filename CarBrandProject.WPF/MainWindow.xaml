@@ -8,7 +8,7 @@
         xmlns:vms="clr-namespace:CarBrandProject.WPF.ViewModels" 
         xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="800">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vms:AddBrandViewModel}">
             <views:AddBrandView/>
@@ -32,13 +32,9 @@
                 <ContentControl Margin="15"
                                 Content="{Binding CurrentViewModel}"/>
             </modalcontrol:Modal>
-            
+
             <views:CarBrandProjectView  Margin="5"
                 DataContext="{Binding CarBrandProjectViewModel}"/>
-            <!--<views:AddModelView/>-->
-            <!--<views:EditModelView/>-->
-            <!--<views:AddBrandView/>-->
-            <!--<views:EditBrandView/>-->
         </Grid>
     </ScrollViewer>
    

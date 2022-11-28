@@ -1,23 +1,26 @@
 ﻿using CarBrandProject.WPF.Stores;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.Commands
 {
-    public class LoadBrandCommand : AsyncBaseCommand
+    public class LoadModelCommand : AsyncBaseCommand
     {
-        private readonly BrandsStores _brandsStores;
+        private readonly ModelsStore _modelsStore;
 
-        public LoadBrandCommand(BrandsStores brandsStores)
+        public LoadModelCommand(ModelsStore modelsStore)
         {
-            _brandsStores = brandsStores;
+            _modelsStore = modelsStore;
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
             try
             {
-                await _brandsStores.Load();
+                await _modelsStore.Load();
             }
             catch (Exception)
             {

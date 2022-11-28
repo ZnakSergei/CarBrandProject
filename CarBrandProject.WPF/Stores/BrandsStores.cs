@@ -3,16 +3,13 @@ using CarBrandProject.WPF.Models;
 using CarBrandProject.WPF.Queries;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Printing;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.Stores
 {
     public class BrandsStores
     {
-        private readonly IGetAllBrandsQuary _getAllBrandsQuary;
+        private readonly IGetAllBrandsQuery _getAllBrandsQuary;
         private readonly ICreateBrandCommand _createBrandCommand;
         private readonly IUpdateBrandCommand _updateBrandCommand;
         private readonly IDeleteBrandCommand _deleteBrandCommand;
@@ -20,7 +17,7 @@ namespace CarBrandProject.WPF.Stores
 
         public IEnumerable<BrandModel> brandModels => _brandModels;
 
-        public BrandsStores(IGetAllBrandsQuary getAllBrandsQuary,
+        public BrandsStores(IGetAllBrandsQuery getAllBrandsQuary,
             ICreateBrandCommand createBrandCommand,
             IUpdateBrandCommand updateBrandCommand,
             IDeleteBrandCommand deleteBrandCommand)
@@ -68,6 +65,7 @@ namespace CarBrandProject.WPF.Stores
             {
                 _brandModels.Add(brandModel);
             }
+
             BrandEdited?.Invoke(brandModel);
         }
 

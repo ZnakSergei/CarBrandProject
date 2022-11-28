@@ -6,6 +6,12 @@
              xmlns:local="clr-namespace:CarBrandProject.WPF.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="DetailsTextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Border BorderBrush="gray" BorderThickness="1" Margin="5">
             <Grid Grid.IsSharedSizeScope="True">
@@ -25,7 +31,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="The name of model:"/>
+                    <TextBlock Text="The name of model:" 
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock  Grid.Column="1" Margin="20 0 0 0"
                                 Text="{Binding ModelName}"                               />
                 </Grid>
@@ -37,7 +44,8 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Type of fuel:"/>
+                    <TextBlock Text="Type of fuel:"
+                               Style="{StaticResource DetailsTextBlock}"/>
 
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding TypeOfFuel}"/>
@@ -50,7 +58,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Date on the market:"/>
+                    <TextBlock Text="Date on the market:"
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding DateOnMarket}"/>
 
@@ -62,7 +71,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Car class:"/>
+                    <TextBlock Grid.Column="0" Text="Car class:"
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding ModelClass}"/>
 
@@ -74,7 +84,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Price:"/>
+                    <TextBlock Text="Price:"
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding Price}"/>
                 </Grid>
@@ -86,7 +97,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Passenger capacity:"/>
+                    <TextBlock Grid.Column="0" Text="Passenger capacity:"
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding PassangerCapacity}"/>
 
@@ -98,7 +110,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Available:"/>
+                    <TextBlock Text="Available:"
+                               Style="{StaticResource DetailsTextBlock}"/>
                     <TextBlock Grid.Column="1" Margin="20 0 0 0"
                                Text="{Binding IsAvalable}"/>
 

@@ -6,7 +6,102 @@
              xmlns:local="clr-namespace:CarBrandProject.WPF.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="AddButton">
+            <Setter Property="Background" Value="#1B73C5"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.Foreground" Value="White"/>
+            <Setter Property="Content" Value="Add Brand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5" Padding="5"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#0155F8" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#1B73C5" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="CancelButton">
+            <Setter Property="Background" Value="#D2D2D2"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.Foreground" Value="Black"/>
+            <Setter Property="Content" Value="Add Brand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5" Padding="5"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#EEEAEA" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#D2D2D2" 
+                                    Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -32,8 +127,10 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Description:" FontSize="16"/>
-            <TextBox MinWidth="250" Grid.Column="1" Margin="20 0 0 0"
-                     MinHeight="50" MaxWidth="400"
+            <TextBox MinWidth="250" Grid.Column="1" Margin="20 0 0 0" Width="250"
+                     MinHeight="50" TextWrapping="WrapWithOverflow"
+                     Height="50"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                      Text="{Binding BrandDescription}"/>
         </Grid>
 
@@ -41,18 +138,26 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Image path" FontSize="16"/>
+            <TextBlock Text="Image path:" FontSize="16"/>
 
-            <TextBox Grid.Column="1" MinWidth="250" MaxWidth="800"
-                     Margin="20 0 0 0" Text="{Binding ImagePath}"/>
+            <TextBox Grid.Column="1" MinWidth="150" MaxWidth="800"
+                     Margin="20 0 0 0" Text="{Binding ImagePath}"
+                     Name="imagePath"/>
+            
+            <Button Grid.Column="2" Content="..."
+                    Margin="10 0 0 0" Width="30"
+                    Click="SelPicButton_Click"/>
         </Grid>
 
         <WrapPanel Grid.Row="3" Margin="50 40 0 0">
             <Button Content="Submit" Margin="0 0 30 0"
+                    Style="{StaticResource AddButton}"
                     Command="{Binding SubmitBrandCommand}"/>
             <Button Content="Cancel" Margin="0 0 30 0"
+                    Style="{StaticResource CancelButton}"
                     Command="{Binding CancelCommand}"/>
         </WrapPanel>
     </Grid>

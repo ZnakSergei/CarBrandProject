@@ -6,11 +6,18 @@
              xmlns:local="clr-namespace:CarBrandProject.WPF.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="Title">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid Margin="5" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
             <Grid>
@@ -26,8 +33,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Brand" FontSize="16"
-                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="Brand" Style="{StaticResource Title}"/>
                         <TextBlock Grid.Row="1" Text="{Binding BrandName}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"/>
@@ -42,31 +48,36 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Label" FontSize="16"
-                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="Label" Style="{StaticResource Title}"/>
 
                         <Image Grid.Row="1" Source="{Binding ImageBrandPath}" 
-                               Width="100" Height="50"/>
+                               Width="40" Height="40"/>
 
                     </Grid>
                 </Border>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" x:Name="gr">
                 <Border BorderBrush="DarkGray" Padding="5" 
                     BorderThickness="1">
-                    <Grid>
+                    <Grid x:Name="r">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="Description" FontSize="16"
-                               HorizontalAlignment="Center"/>
+                        <TextBlock Text="Description" Style="{StaticResource Title}"/>
 
-                        <TextBlock Grid.Row="1"
-                               Text="{Binding Description}" 
-                               TextWrapping="WrapWithOverflow"/>
+                        
+                            <TextBlock Grid.Row="1"
+                                   Text="{Binding Description}"                                   
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Left"
+                                       ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                       ScrollViewer.CanContentScroll="True"
+                                  MaxHeight="{Binding ActualHeight, ElementName=r}"
+                                   MaxWidth="{Binding ActualWidth, ElementName=gr}"/>
+                      
                     </Grid>
                 </Border>
             </Grid>

@@ -2,9 +2,6 @@
 using CarBrandProject.WPF.Stores;
 using CarBrandProject.WPF.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.Commands
@@ -19,7 +16,6 @@ namespace CarBrandProject.WPF.Commands
             _brandItemListing = brandItemListing;
             _brandsStores = brandsStores;           
         }
-
         public override async Task ExecuteAsync(object parameter)
         {
             BrandModel brandModel = _brandItemListing.BrandModel;

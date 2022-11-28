@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.Commands
 {
-    public interface IDeleteBrandCommand
+    public interface IDeleteModelCommand
     {
-        Task Execute(Guid BrandId);
+        public Task Execute(Guid modelId);
     }
 }

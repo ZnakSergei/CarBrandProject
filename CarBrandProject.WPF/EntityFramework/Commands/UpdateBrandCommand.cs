@@ -1,11 +1,6 @@
 ﻿using CarBrandProject.WPF.Commands;
 using CarBrandProject.WPF.EntityFramework.DTOs;
 using CarBrandProject.WPF.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.EntityFramework.Commands

@@ -1,17 +1,10 @@
 ﻿using CarBrandProject.WPF.Commands;
 using CarBrandProject.WPF.Models;
 using CarBrandProject.WPF.Stores;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CarBrandProject.WPF.ViewModels
 {
-
     public class ModelListingItemViewModel : BaseViewModel
     {
         public ModelsModel ModelsModel { get; set; }
@@ -19,15 +12,18 @@ namespace CarBrandProject.WPF.ViewModels
         public string ModelName => ModelsModel.ModelName;
         public ICommand EditModelCommand { get; set; }
         public ICommand DeleteModelCommand { get; set; }
-        
+        public ICommand LoadModelCommand { get; set; }
 
         public ModelListingItemViewModel(ModelsModel modelsModel, ModelsStore modelsStore, ModalNavigationStore modalNavigationStore)
         {
             ModelsModel = modelsModel;
             EditModelCommand = new OpenEditModelCommand(this, modelsStore, modalNavigationStore);
+            DeleteModelCommand = new DeleteModelItemViewModelCommand(modelsStore, this);
         }
 
-        internal void Update(ModelsModel modelsModel)
+        
+
+        public void Update(ModelsModel modelsModel)
         {
             ModelsModel = modelsModel;
 

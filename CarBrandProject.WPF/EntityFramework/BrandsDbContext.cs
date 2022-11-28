@@ -1,12 +1,5 @@
 ﻿using CarBrandProject.WPF.EntityFramework.DTOs;
-using CarBrandProject.WPF.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.EntityFramework
 {
@@ -16,5 +9,7 @@ namespace CarBrandProject.WPF.EntityFramework
         {
         }
         public DbSet<BrandDto> Brands { get; set; }
+        public DbSet<ModelDto> Models { get; set; }
+
     }
 }

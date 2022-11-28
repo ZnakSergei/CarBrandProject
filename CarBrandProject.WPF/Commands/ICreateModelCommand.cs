@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.Commands
 {
-    public interface IUpdateBrandCommand
+    public interface ICreateModelCommand
     {
-        Task Execute(BrandModel brandModel);
+        Task Execute(ModelsModel modelsModel);
     }
 }

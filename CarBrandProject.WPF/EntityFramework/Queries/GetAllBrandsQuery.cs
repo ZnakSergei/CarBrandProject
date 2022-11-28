@@ -2,15 +2,13 @@
 using CarBrandProject.WPF.Models;
 using CarBrandProject.WPF.Queries;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBrandProject.WPF.EntityFramework.Queries
 {
-    public class GetAllBrandsQuery : IGetAllBrandsQuary
+    public class GetAllBrandsQuery : IGetAllBrandsQuery
     {
         private readonly BrandsDbContextFactory _brandsContextFactory;
         public GetAllBrandsQuery(BrandsDbContextFactory brandsContextFactory)
